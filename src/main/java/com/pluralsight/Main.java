@@ -4,38 +4,45 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+
+        // Creating a scanner so user input can but used as data
         Scanner sc = new Scanner(System.in);
 
+        // Creating my first variables to split the teams and score into halves
+        String gameScore;
+        String teams;
+        String scores;
 
-        //Ask for input
-        System.out.println("Whats the score for each team? (Team1:Team2|Score1:Score2)");
-        String gamescore = sc.nextLine();
-        sc.nextLine();
+        // Prompting the user to type in the info I need
+        System.out.print("Please enter the game score (Home:Visitor|0:0): ");
+        gameScore = sc.nextLine(); //Using scanner to hold user input data
 
-        //split the names from the scores
-        String[] parts = gamescore.split("\\|");
+        //Splitting everything in half from "|"
+        String[] splitString = gameScore.split("\\|");
 
-        String[] teams = parts[0].split(":");
-        String[] scores = parts[1].split(":");
+        //Splitting the first half which is the team names from ":"
+        teams = splitString[0];
+        String[] teamSplit = teams.split(":");
+        //Defining what the first and second names are into variables
+        String team1 = teamSplit[0];
+        String team2 = teamSplit[1];
 
-        String team1 = teams[0];
-        String team2 = teams[1];
+        //Splitting the first half which is the team scores from ":"
+        scores = splitString[1];
+        String[] scoreSplit = scores.split(":");
+        //Defining what the first and second scores are into variables
+        int score1 = Integer.parseInt(scoreSplit[0]);
+        int score2 = Integer.parseInt(scoreSplit[1]);
 
 
-        //Compare scores
-        int score1;
-        int score2;
-        //I dont undertand what to do here
-
-
-        //Print winner
         if (score1 > score2) {
-            System.out.println(team1 + "wins!");
-        } else if (score1 < score2) {
-            System.out.println(team2 + "wins!");
-        } else {
-            System.out.println("It's a tie!");
-
+            System.out.println(team1 + " Wins!");
+        }
+        else if (score1 < score2) {
+            System.out.println(team2 + " Wins!");
+        }
+        else {
+            System.out.println(team1 + " and " + team2 + " had a tie!");
         }
     }
 }
